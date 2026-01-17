@@ -1,0 +1,143 @@
+/* Global */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* App Container */
+.app-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+.header {
+  background: #ffffff;
+  padding: 16px 24px;
+  border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* Navigation */
+.nav {
+  margin-top: 12px;
+}
+
+.nav button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  border: none;
+  background: #e0e0e0;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.nav button.active {
+  background: #1976d2;
+  color: white;
+}
+
+/* Main Content */
+.content {
+  padding: 24px;
+}
+
+/* Cards */
+form,
+.section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
+/* Inputs */
+input,
+select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+.error {
+  color: #d32f2f;
+  background: #fdecea;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: #f5f7fa;
+  text-align: left;
+  padding: 10px;
+}
+
+.table td {
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+/* Clickable rows */
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: #f0f4ff;
+}
+
+/* Buttons */
+button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  background: #1976d2;
+  color: white;
+}
+
+button.danger {
+  background: #d32f2f;
+}
+
+/* Empty states */
+.empty {
+  color: #666;
+  font-style: italic;
+}
+
+.success {
+  color: #2e7d32;
+  background: #edf7ed;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
