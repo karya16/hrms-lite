@@ -79,16 +79,12 @@ WSGI_APPLICATION = 'hrms.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hrms_db',
-        'USER': 'root',
-        'PASSWORD': 'K@rtik_7075',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3'
+    )
 }
 
 
