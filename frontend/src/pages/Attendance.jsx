@@ -26,28 +26,42 @@ function Attendance() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!form.employee || !form.date || !form.status) {
+    if (!form.employee || !form.date) {
       setError("All fields are required.");
-      setMessage("");
       return;
     }
 
     try {
       setError("");
+      setMessage("");
+
       await api("attendance/", {
         method: "POST",
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          employee: Number(form.employee),
+          date: form.date,
+          status: form.status,
+        }),
       });
 
       setMessage("Attendance marked successfully.");
-      setForm({ employee: "", date: "", status: "Present" });
+
+      setForm({
+        employee: "",
+        date: "",
+        status: "Present",
+      });
 
       loadData();
     } catch (err) {
-      setError(err.message);
-      setMessage("");
+      setError(
+        typeof err === "object"
+          ? Object.values(err).flat().join(" ")
+          : "Something went wrong"
+      );
     }
   };
+
 
 
 
