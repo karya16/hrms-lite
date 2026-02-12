@@ -7,7 +7,6 @@ body {
 /* Layout */
 .layout {
   display: flex;
-  min-height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -61,6 +60,7 @@ body {
 /* Content */
 .content {
   flex: 1;
+  min-height: 100vh;
   padding: 40px;
 }
 
@@ -161,7 +161,9 @@ tbody tr:hover {
   margin-bottom: 15px;
 }
 
-
+.table-container {
+  overflow-x: auto;
+}
 
 
 /* FORM GRID */
