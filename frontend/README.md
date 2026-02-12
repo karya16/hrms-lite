@@ -1,16 +1,82 @@
-# React + Vite
+# HRMS Lite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+HRMS Lite is a lightweight web-based Human Resource Management System developed as part of a full-stack assignment.  
+The application focuses on basic HR operations such as managing employee records and tracking daily attendance.
 
-Currently, two official plugins are available:
+The goal of this project was to build a clean and functional system with proper frontend–backend integration and live deployment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Live Application
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Frontend: hrms-lite-pi.vercel.app  
+- Backend API: https://hrms-backend-hmjc.onrender.com  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+### Employee Management
+- Add new employees
+- View all employees
+- Delete employees
+- Unique employee ID validation
+- Email format validation
+
+### Attendance Management
+- Mark daily attendance for employees
+- Attendance status: Present or Absent
+- View attendance records per employee
+- Prevent duplicate attendance entries for the same date
+
+---
+
+## Tech Stack
+
+### Frontend
+- React (Vite)
+- JavaScript
+- CSS
+
+### Backend
+- Django
+- Django REST Framework
+
+### Database
+- MySQL (local development)
+- PostgreSQL (production)
+
+### Deployment
+- Frontend deployed on Vercel
+- Backend deployed on Render
+
+---
+
+## API Endpoints
+
+### Employees
+- `GET /api/employees/` – Fetch all employees
+- `POST /api/employees/` – Add a new employee
+- `DELETE /api/employees/{id}/` – Delete an employee
+
+### Attendance
+- `POST /api/attendance/` – Mark attendance
+- `GET /api/attendance/{employee_id}/` – Fetch attendance records for an employee
+
+---
+
+## Running the Project Locally
+
+### Backend Setup
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+
+### Frontend Setup
+cd frontend
+npm install
+npm run dev
