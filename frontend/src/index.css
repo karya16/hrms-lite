@@ -10,6 +10,28 @@ body {
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .sidebar h2 {
+    display: none;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
 /* Sidebar */
 .sidebar {
   width: 240px;
@@ -187,4 +209,3 @@ tbody tr:hover {
     width: 100%;
   }
 }
-
