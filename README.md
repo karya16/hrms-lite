@@ -9,8 +9,7 @@ The goal of this project was to build a clean and functional system with proper 
 
 ## Live Application
 
-- Frontend: hrms-lite-pi.vercel.app  
-- Backend API: https://hrms-backend-hmjc.onrender.com  
+- Frontend: hrms-lite-silk-eight.vercel.app    
 
 ---
 
@@ -43,7 +42,7 @@ The goal of this project was to build a clean and functional system with proper 
 - Django REST Framework
 
 ### Database
-- MySQL (local development)
+- Sqlite (local development)
 - PostgreSQL (production)
 
 ### Deployment
