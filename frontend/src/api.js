@@ -1,4 +1,4 @@
-const BASE_URL = "http://127.0.0.1:8000/api/";
+const BASE_URL = "https://hrms-lite-azpo.onrender.com/api/";
 
 export const api = async (endpoint, options = {}) => {
   const res = await fetch(BASE_URL + endpoint, {
