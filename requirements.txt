@@ -1,3 +1,4 @@
+# This file lists backend Python dependencies.
 asgiref==3.11.0
 dj-database-url==3.1.0
 Django==5.2.10
