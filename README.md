@@ -9,7 +9,7 @@ The goal of this project was to build a clean and functional system with proper 
 
 ## Live Application
 
-- Frontend: hrms-lite-silk-eight.vercel.app    
+- Frontend: hrms-lite-lac-five.vercel.app    
 
 ---
 
@@ -60,9 +60,23 @@ The goal of this project was to build a clean and functional system with proper 
 
 ### Attendance
 - `POST /api/attendance/` – Mark attendance
-- `GET /api/attendance/{employee_id}/` – Fetch attendance records for an employee
+- `GET /api/attendance/{id}/` – Fetch a specific attendance record
+
+### Dashboard
+
+- (Frontend route – uses employee & attendance APIs to display summary)
+- `GET /api/employees/` – Used to calculate total employees
+- `GET /api/attendance/` – Used to calculate attendance summary
 
 ---
+
+### Frontend Routes (React)
+
+- Application Routes
+- `/` – Dashboard
+- `/employees` – Employee Management Page
+- `/attendance` – Attendance Management Page
+
 
 ## Running the Project Locally
 
