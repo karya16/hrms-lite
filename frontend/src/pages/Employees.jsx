@@ -1,3 +1,185 @@
+
+import { useEffect, useState } from "react";
+import { api } from "../api";
+import Modal from "../components/Modal";
+import EmployeeModal from "../components/EmployeeModal";
+
+function Employees() {
+  const [employees, setEmployees] = useState([]);
+  const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const loadEmployees = async () => {
+    try {
+      setLoading(true);
+      const data = await api("employees/");
+      setEmployees(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadEmployees();
+  }, []);
+
+  const handleAddEmployee = async (form) => {
+    try {
+      setErrors({});
+      await api("employees/", {
+        method: "POST",
+        body: JSON.stringify(form),
+      });
+
+      showMessage("Employee added successfully 🎉", "success");
+
+      setIsModalOpen(false);
+      loadEmployees();
+    } catch (err) {
+      showMessage("Failed to add employee ❌", "error");
+      setErrors(err.data || {});
+    }
+  };
+
+
+  const showMessage = (text, type = "success") => {
+    setMessage({ text, type });
+
+    setTimeout(() => {
+      setMessage(null);
+    }, 3000);
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this employee?")) return;
+
+    try {
+      await api(`employees/${id}/`, { method: "DELETE" });
+
+      showMessage("Employee deleted successfully 🗑️", "success");
+
+      loadEmployees();
+    } catch (err) {
+      showMessage("Failed to delete employee ❌", "error");
+    }
+  };
+
+
+  const filteredEmployees = employees.filter((emp) =>
+    emp.full_name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div>
+      {message && (
+        <div
+          className={`top-alert ${
+            message.type === "success"
+              ? "alert-success"
+              : "alert-error"
+          }`}
+        >
+          <div className="alert-content">
+            <span className="alert-icon">
+              {message.type === "success" ? "✔" : "⚠"}
+            </span>
+            <span className="alert-text">{message.text}</span>
+          </div>
+
+          <button
+            className="alert-close"
+            onClick={() => setMessage(null)}
+          >
+            ×
+          </button>
+        </div>
+      )}
+
+      <div className="page-header">
+        <h1>Employees</h1>
+        <button onClick={() => setIsModalOpen(true)}>
+          Add Employee
+        </button>
+      </div>
+
+      <input
+        className="search-input"
+        placeholder="Search by name..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
+      <div className="card">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredEmployees.length > 0 ? (
+                filteredEmployees.map((emp) => (
+                  <tr key={emp.id}>
+                    <td>{emp.full_name}</td>
+                    <td>{emp.employee_id}</td>
+                    <td>
+                      <span className="badge">
+                        {emp.department}
+                      </span>
+                    </td>
+                    <td>{emp.email}</td>
+                    <td>
+                      <button
+                        className="danger-btn"
+                        onClick={() => handleDelete(emp.id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="no-data-cell">
+                    No employees found 🔍
+                  </td>
+                </tr>
+              )}
+            </tbody>
+
+          </table>
+        )}
+      </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <EmployeeModal
+          onSubmit={handleAddEmployee}
+          errors={errors}
+        />
+      </Modal>
+    </div>
+  );
+}
+
+export default Employees;
+
+
+/*
 import { useEffect, useState } from "react";
 import { api } from "../api";
 
@@ -185,4 +367,4 @@ function Employees() {
   );
 }
 
-export default Employees;
+export default Employees;*/
