@@ -20,13 +20,11 @@ The goal of this project was to build a clean and functional system with proper 
 - View all employees
 - Delete employees
 - Unique employee ID validation
-- Email format validation
 
 ### Attendance Management
 - Mark daily attendance for employees
 - Attendance status: Present or Absent
 - View attendance records per employee
-- Prevent duplicate attendance entries for the same date
 
 ---
 
