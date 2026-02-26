@@ -41,7 +41,7 @@ body {
 /* Layout */
 .layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;     /* 🔥 FIXED HEIGHT */
   overflow: hidden;
 }
 
@@ -100,8 +100,7 @@ body {
 .content {
   flex: 1;
   padding: 20px;
-  
-  overflow: hidden;
+  overflow-y: auto;   /* 🔥 allow dashboard scroll */
 }
 
 /* Page Title */
@@ -485,6 +484,18 @@ tbody tr:hover {
   border-radius: 12px;
   margin-bottom: 30px;
   border: 1px solid #334155;
+  box-sizing:  border-box;
+  
+}
+
+.dashboard-section1 {
+  background: #1f2638;
+  
+  padding: 22px;
+  border-radius: 12px;
+  
+  border: 1px solid #334155;
+  box-sizing:  border-box;
   
 }
 
@@ -500,16 +511,6 @@ tbody tr:hover {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
-
-/*
-.stat-item {
-  background: #0f172a;
-  padding: 16px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}*/
 
 .stat-label {
   display: flex;
@@ -603,11 +604,6 @@ tbody tr:hover {
   background: #6366f1;
 }
 
-
-
-
-
-
 .attendance-rate-container {
   margin-top: 18px;
 }
@@ -645,16 +641,6 @@ tbody tr:hover {
   transition: width 0.4s ease;
 }
 
-
-
-
-
-
-
-
-
-
-
 .dept-track {
   width: 100%;
   height: 5px;
@@ -662,8 +648,6 @@ tbody tr:hover {
   border-radius: 8px;
   
 }
-
-
 
 .stat-item {
   background: #1f2638;
@@ -674,13 +658,6 @@ tbody tr:hover {
   align-items: center;
   border: 1px solid #334155;
 }
-
-
-
-
-
-/* Two-column layout */
-
 
 /* Card */
 .dept-card {
@@ -717,33 +694,12 @@ tbody tr:hover {
   font-size: 14px;
 }
 
-/* Text */
-
-
-
-
-/* Progress bar */
-
-
-
-
-
-
-
-
-
-
-
-
 /* Container (single box) */
 .dept-container {
   margin-top: 15px;
   max-height: 220px;   /* controls scroll height */
   padding-right: 6px;
 }
-
-/* 3-column layout * #1c243a/
-
 
 /* Each department item */
 .dept-item {
@@ -766,7 +722,6 @@ tbody tr:hover {
   margin-bottom: 8px;
   font-size: 13px;
 }
-
 
 .empty-state-box {
   margin-top: 40px;
@@ -813,7 +768,6 @@ tbody tr:hover {
   }
 }
 
-
 .nav-link {
   display: flex;
   align-items: center;
@@ -834,8 +788,6 @@ tbody tr:hover {
   background: rgba(59, 130, 246, 0.15);
   color: var(--primary);
 }
-/* Progress bar */
-
 
 /* Scrollbar styling (optional premium look) */
 .dept-container::-webkit-scrollbar {
@@ -847,32 +799,20 @@ tbody tr:hover {
   border-radius: 6px;
 }
 
-/* Responsive */
-
-
-/* Outer visual box */
-
-
-/* Scroll only inside this area */
-
-
-/* Grid */
-
-
-
-
 
 
 .main-cont {
   background: #15171d;
-  max-height: 750px;
-  overflow: hidden;        /* Prevent outer expansion */
+  min-height: 100%;
+  overflow: hidden;
   
+  box-sizing: border-box;
+
 }
 
-
-
 /* Outer box (single container) */
+
+
 .dept-box {
   margin-top: 15px;
   background: #1f2638;
@@ -880,8 +820,7 @@ tbody tr:hover {
   border: 1px solid #334155;
   padding: 16px;
 
-  height: 140px;           /* 🔥 FIXED HEIGHT */
-          /* Prevent outer expansion */
+  max-height: 130px;              /* 🔥 FIXED HEIGHT */
   display: flex;
   flex-direction: column;
 }
@@ -916,11 +855,10 @@ tbody tr:hover {
 
 /* Scroll area ONLY inside this */
 .dept-scroll {
-  max-height: 220px;
+  flex: 1;              /* 🔥 take remaining height */
   overflow-y: auto;
 }
 
-/* 3 column grid */
 /* Grid with bigger gap between columns */
 .dept-grid {
   display: grid;
@@ -980,10 +918,6 @@ tbody tr:hover {
   min-width: 18px;
   text-align: right;
 }
-
-/* Scrollbar styling */
-
-
 
 /* Left info section */
 .dept-info {

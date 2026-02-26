@@ -124,7 +124,7 @@ function Dashboard() {
       </div>
 
       {/* Department Distribution */}
-      <div className="dashboard-section">
+      <div className="dashboard-section1">
         <h3>Department Distribution</h3>
 
         <div className="dept-box">
