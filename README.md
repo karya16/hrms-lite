@@ -9,7 +9,8 @@ The goal of this project was to build a clean and functional system with proper 
 
 ## Live Application
 
-- Frontend: hrms-lite-lac-five.vercel.app    
+- Frontend: hrms-lite-lac-five.vercel.app
+- Backend: https://hrms-lite-tfqr.onrender.com/api/    
 
 ---
 
@@ -33,7 +34,7 @@ The goal of this project was to build a clean and functional system with proper 
 ### Frontend
 - React (Vite)
 - JavaScript
-- CSS
+- Tailwind CSS
 
 ### Backend
 - Django
