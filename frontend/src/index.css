@@ -62,8 +62,8 @@
 
   /* Sidebar */
   .sidebar {
-    @apply w-full md:w-[220px] bg-gray-900 border-r border-slate-800
-           flex flex-col px-5 py-[30px];
+    @apply w-[220px] min-h-screen bg-gray-900 border-r border-slate-800
+         flex flex-col px-5 py-[30px] overflow-y-auto;;
   }
 
   .sidebar-title {
