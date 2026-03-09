@@ -44,16 +44,26 @@ function Dashboard() {
     ...new Set(employees.map((e) => e.department)),
   ];
 
+  const todays = new Date().toLocaleDateString("en-IN", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  });
+
   const departmentCounts = employees.reduce((acc, emp) => {
     acc[emp.department] =
       (acc[emp.department] || 0) + 1;
     return acc;
   }, {});
 
+  
+
   return (
     <div>
 
       <h1 className="page-title">Dashboard</h1>
+      <p className="text-slate-400 text-sm mt-1">{todays}</p>
 
       {/* Workforce Overview */}
       <div className="section-card mb-[30px]">
