@@ -85,10 +85,13 @@ function Employees() {
           }`}
         >
           <div className="alert-content">
-            <span className="alert-icon">
+            <span className="text-[18px] font-bold">
               {message.type === "success" ? "✔" : "⚠"}
             </span>
-            <span className="alert-text">{message.text}</span>
+
+            <span className="text-sm">
+              {message.text}
+            </span>
           </div>
 
           <button
@@ -100,50 +103,72 @@ function Employees() {
         </div>
       )}
 
+      {/* Page Header */}
       <div className="page-header">
-        <h1>Employees</h1>
-        <button onClick={() => setIsModalOpen(true)}>
+        <h1 className="text-xl font-semibold text-slate-200">
+          Employees
+        </h1>
+
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg text-sm transition"
+        >
           Add Employee
         </button>
       </div>
 
+      {/* Search */}
       <input
-        className="search-input"
+        className="search-input w-full max-w-[280px]"
         placeholder="Search by name..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
 
+      {/* Card */}
       <div className="card">
         {loading ? (
-          <p>Loading...</p>
+          <p className="text-slate-400">Loading...</p>
         ) : (
-          <table>
-            <thead>
+          <table className="w-full text-sm">
+            <thead className="text-slate-400 border-b border-slate-700">
               <tr>
-                <th>Name</th>
-                <th>ID</th>
-                <th>Department</th>
-                <th>Email</th>
-                <th>Actions</th>
+                <th className="text-left py-3">Name</th>
+                <th className="text-left py-3">ID</th>
+                <th className="text-left py-3">Department</th>
+                <th className="text-left py-3">Email</th>
+                <th className="text-left py-3">Actions</th>
               </tr>
             </thead>
-            <tbody>
+
+            <tbody className="divide-y divide-slate-700">
               {filteredEmployees.length > 0 ? (
                 filteredEmployees.map((emp) => (
                   <tr key={emp.id}>
-                    <td>{emp.full_name}</td>
-                    <td>{emp.employee_id}</td>
-                    <td>
+                    <td className="py-3">
+                      {emp.full_name}
+                    </td>
+
+                    <td className="py-3">
+                      {emp.employee_id}
+                    </td>
+
+                    <td className="py-3">
                       <span className="badge">
                         {emp.department}
                       </span>
                     </td>
-                    <td>{emp.email}</td>
-                    <td>
+
+                    <td className="py-3">
+                      {emp.email}
+                    </td>
+
+                    <td className="py-3">
                       <button
                         className="danger-btn"
-                        onClick={() => handleDelete(emp.id)}
+                        onClick={() =>
+                          handleDelete(emp.id)
+                        }
                       >
                         Delete
                       </button>
@@ -152,17 +177,20 @@ function Employees() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="no-data-cell">
+                  <td
+                    colSpan="5"
+                    className="no-data-cell"
+                  >
                     No employees found 🔍
                   </td>
                 </tr>
               )}
             </tbody>
-
           </table>
         )}
       </div>
 
+      {/* Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

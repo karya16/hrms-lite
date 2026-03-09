@@ -92,10 +92,13 @@ function Attendance() {
           }`}
         >
           <div className="alert-content">
-            <span className="alert-icon">
+            <span className="text-[18px] font-bold">
               {message.type === "success" ? "✔" : "⚠"}
             </span>
-            <span className="alert-text">{message.text}</span>
+
+            <span className="text-sm">
+              {message.text}
+            </span>
           </div>
 
           <button
@@ -111,13 +114,19 @@ function Attendance() {
 
       {/* Employee Selector */}
       <div className="section">
-        <label>Select Employee</label>
+        <label className="block mb-2 text-slate-400 text-sm">
+          Select Employee
+        </label>
+
         <select
-          className="attendance-select"
+          className="attendance-select w-full max-w-[260px]"
           value={selectedEmployee}
-          onChange={(e) => setSelectedEmployee(e.target.value)}
+          onChange={(e) =>
+            setSelectedEmployee(e.target.value)
+          }
         >
           <option value="">Choose employee</option>
+
           {employees.map((emp) => (
             <option key={emp.id} value={emp.id}>
               {emp.full_name}
@@ -129,17 +138,20 @@ function Attendance() {
       {/* If No Employee Selected */}
       {!selectedEmployee && (
         <div className="empty-state-box">
-          <div className="empty-icon"></div>
+          <div className="text-[40px] mb-[15px] opacity-80">
+            👤
+          </div>
 
-          <h3>Select an Employee</h3>
+          <h3 className="text-lg mb-2 text-gray-800">
+            Select an Employee
+          </h3>
 
-          <p>
+          <p className="text-sm text-gray-500 max-w-[400px] mx-auto leading-relaxed">
             Please choose an employee from the dropdown
             to manage attendance records.
           </p>
         </div>
       )}
-
 
       {/* If Employee Selected */}
       {selectedEmployee && (
@@ -150,20 +162,26 @@ function Attendance() {
               {selectedEmpData?.full_name?.charAt(0)}
             </div>
 
-            <div className="employee-info">
-              <h2>{selectedEmpData?.full_name}</h2>
-              <p>
+            <div>
+              <h2 className="text-lg font-semibold">
+                {selectedEmpData?.full_name}
+              </h2>
+
+              <p className="text-[13px] text-slate-400">
                 {selectedEmpData?.employee_id} •{" "}
                 {selectedEmpData?.department} •{" "}
                 {selectedEmpData?.email}
               </p>
             </div>
           </div>
+
           {/* Mark Attendance */}
           <div className="section">
-            <h3>Mark Attendance</h3>
+            <h3 className="mb-[15px] text-[16px] font-medium">
+              Mark Attendance
+            </h3>
 
-            <div className="attendance-row">
+            <div className="flex gap-[15px] items-center flex-wrap">
               <input
                 className="attendance-select"
                 type="date"
@@ -174,13 +192,23 @@ function Attendance() {
               <select
                 className="attendance-select"
                 value={status}
-                onChange={(e) => setStatus(e.target.value)}
+                onChange={(e) =>
+                  setStatus(e.target.value)
+                }
               >
-                <option value="Present">Present</option>
-                <option value="Absent">Absent</option>
+                <option value="Present">
+                  Present
+                </option>
+
+                <option value="Absent">
+                  Absent
+                </option>
               </select>
 
-              <button onClick={handleMarkAttendance}>
+              <button
+                onClick={handleMarkAttendance}
+                className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg text-sm transition"
+              >
                 Mark
               </button>
             </div>
@@ -188,28 +216,39 @@ function Attendance() {
 
           {/* Attendance Records */}
           <div className="section">
-            <h3>Attendance Records</h3>
+            <h3 className="mb-[15px] text-[16px] font-medium">
+              Attendance Records
+            </h3>
 
-            {/* Overview at top of table */}
-            <div className="overview-inline">
+            {/* Overview */}
+            <div className="flex gap-[30px] text-sm text-slate-300 mb-4">
               <span>Total: {attendance.length}</span>
               <span>Present: {totalPresent}</span>
               <span>Absent: {totalAbsent}</span>
             </div>
 
             <div className="table-container">
-              <table>
-                <thead>
+              <table className="w-full text-sm">
+                <thead className="border-b border-slate-700 text-slate-400">
                   <tr>
-                    <th>Date</th>
-                    <th>Status</th>
+                    <th className="text-left py-2">
+                      Date
+                    </th>
+
+                    <th className="text-left py-2">
+                      Status
+                    </th>
                   </tr>
                 </thead>
-                <tbody>
+
+                <tbody className="divide-y divide-slate-700">
                   {attendance.map((item) => (
                     <tr key={item.id}>
-                      <td>{item.date}</td>
-                      <td>
+                      <td className="py-2">
+                        {item.date}
+                      </td>
+
+                      <td className="py-2">
                         <span
                           className={
                             item.status === "Present"
@@ -226,7 +265,7 @@ function Attendance() {
               </table>
 
               {attendance.length === 0 && (
-                <p className="empty-state">
+                <p className="mt-[15px] text-slate-400">
                   No attendance records found.
                 </p>
               )}

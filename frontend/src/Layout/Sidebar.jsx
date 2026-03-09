@@ -4,7 +4,9 @@ import { LayoutDashboard, Users, CalendarCheck } from "lucide-react";
 function Sidebar() {
   return (
     <div className="sidebar">
-      <h2>HRMS Lite</h2>
+
+      <h2 className="sidebar-title">HRMS Lite</h2>
+
       <NavLink to="/" className="nav-link">
         <LayoutDashboard size={18} />
         <span>Dashboard</span>
@@ -19,6 +21,7 @@ function Sidebar() {
         <CalendarCheck size={18} />
         <span>Attendance</span>
       </NavLink>
+
     </div>
   );
 }
