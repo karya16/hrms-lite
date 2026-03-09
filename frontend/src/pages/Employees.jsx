@@ -104,7 +104,7 @@ function Employees() {
       )}
 
       {/* Page Header */}
-      <div className="page-header">
+      <div className="page-header mb-[30px]">
         <h1 className="text-xl font-semibold text-slate-200">
           Employees
         </h1>
@@ -126,68 +126,71 @@ function Employees() {
       />
 
       {/* Card */}
-      <div className="card">
-        {loading ? (
-          <p className="text-slate-400">Loading...</p>
-        ) : (
-          <table className="w-full text-sm">
-            <thead className="text-slate-400 border-b border-slate-700">
-              <tr>
-                <th className="text-left py-3">Name</th>
-                <th className="text-left py-3">ID</th>
-                <th className="text-left py-3">Department</th>
-                <th className="text-left py-3">Email</th>
-                <th className="text-left py-3">Actions</th>
-              </tr>
-            </thead>
+      <div className="card ">
+        
+          {loading ? (
+            <p className="text-slate-400">Loading...</p>
+          ) : (
+            <table className="text-sm">
+              <thead className="text-slate-400 border-b border-slate-700">
+                <tr>
+                  <th className="text-left py-3">Name</th>
+                  <th className="text-left py-3">ID</th>
+                  <th className="text-left py-3">Department</th>
+                  <th className="text-left py-3">Email</th>
+                  <th className="text-left py-3">Actions</th>
+                </tr>
+              </thead>
 
-            <tbody className="divide-y divide-slate-700">
-              {filteredEmployees.length > 0 ? (
-                filteredEmployees.map((emp) => (
-                  <tr key={emp.id}>
-                    <td className="py-3">
-                      {emp.full_name}
-                    </td>
+              <tbody className="divide-y divide-slate-700">
+                {filteredEmployees.length > 0 ? (
+                  filteredEmployees.map((emp) => (
+                    <tr key={emp.id}>
+                      <td className="py-3">
+                        {emp.full_name}
+                      </td>
 
-                    <td className="py-3">
-                      {emp.employee_id}
-                    </td>
+                      <td className="py-3">
+                        {emp.employee_id}
+                      </td>
 
-                    <td className="py-3">
-                      <span className="badge">
-                        {emp.department}
-                      </span>
-                    </td>
+                      <td className="py-3">
+                        <span className="badge">
+                          {emp.department}
+                        </span>
+                      </td>
 
-                    <td className="py-3">
-                      {emp.email}
-                    </td>
+                      <td className="py-3">
+                        {emp.email}
+                      </td>
 
-                    <td className="py-3">
-                      <button
-                        className="danger-btn"
-                        onClick={() =>
-                          handleDelete(emp.id)
-                        }
-                      >
-                        Delete
-                      </button>
+                      <td className="py-3">
+                        <button
+                          className="danger-btn"
+                          onClick={() =>
+                            handleDelete(emp.id)
+                          }
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="5"
+                      className="no-data-cell"
+                    >
+                      No employees found 🔍
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td
-                    colSpan="5"
-                    className="no-data-cell"
-                  >
-                    No employees found 🔍
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+        
         )}
+        
       </div>
 
       {/* Modal */}
