@@ -190,7 +190,7 @@
   }
 
   .dept-fill {
-    @apply h-full rounded-md bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300;
+    @apply h-full rounded-md bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300 min-w-[6px];
   }
 
   .dept-count {
