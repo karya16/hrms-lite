@@ -23,7 +23,7 @@ function Layout() {
         </header>
 
         {/* Page content */}
-        <div className="p-8">
+        <div className=" flex-1 min-h-screen p-6">
           <Outlet />
         </div>
 
