@@ -1,4 +1,4 @@
-const BASE_URL = " https://hrms-lite-tfqr.onrender.comapi/";
+const BASE_URL = " https://hrms-lite-tfqr.onrender.com/api/";
 
 export const api = async (endpoint, options = {}) => {
   const res = await fetch(BASE_URL + endpoint, {
