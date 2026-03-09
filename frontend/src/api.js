@@ -1,4 +1,5 @@
-const BASE_URL = " https://hrms-lite-tfqr.onrender.com/api/";
+const BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:8000/api/";
 
 export const api = async (endpoint, options = {}) => {
   const res = await fetch(BASE_URL + endpoint, {
@@ -9,7 +10,6 @@ export const api = async (endpoint, options = {}) => {
   const data = await res.json().catch(() => ({}));
 
   if (!res.ok) {
-    // Throw the entire error object from DRF
     throw data;
   }
 
