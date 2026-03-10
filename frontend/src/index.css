@@ -157,11 +157,11 @@
 
   /* Department section */
   .dept-box {
-    @apply mt-[15px] bg-[#1f2638] border border-slate-700 rounded-xl p-4 flex flex-col max-h-[130px];
+    @apply mt-[15px] bg-[#1f2638] border border-slate-700 rounded-xl p-4 flex flex-col;
   }
 
   .dept-scroll {
-    @apply flex-1 overflow-y-auto;
+    @apply flex-1 overflow-y-auto max-h-[70px];
   }
 
   .dept-grid {

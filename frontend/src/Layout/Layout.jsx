@@ -10,7 +10,7 @@ function Layout() {
       <main className="flex-1 ml-[220px]">
 
         {/* Header */}
-        <header className="px-8 py-6 bg-gray-900 border-b border-slate-800 flex justify-end">
+        <header className="px-8 py-4 bg-gray-900 border-b border-slate-800 flex justify-end">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white text-xs font-bold">
               K
