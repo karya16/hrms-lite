@@ -265,7 +265,7 @@
   /* Card */
   .card {
     @apply bg-[#1f2638] p-[25px] rounded-xl border border-slate-700
-           overflow-y-auto overflow-x-auto;
+           max-h-[550px] overflow-y-auto overflow-x-auto;
   }
 
   /* Section card */
