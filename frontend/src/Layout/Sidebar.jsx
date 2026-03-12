@@ -1,33 +1,47 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Users, CalendarCheck } from "lucide-react";
+import { LayoutDashboard, Users, CalendarCheck, X } from "lucide-react";
 
-function Sidebar() {
+function Sidebar({ open, setOpen }) {
   return (
-    <div className="sidebar">
-      <div className="pb-6 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center
-                              ">
-          <span className="text-white text-sm font-bold font-display">H</span>
+
+    <div
+      className={`sidebar 
+      ${open ? "translate-x-0" : "-translate-x-full"} 
+      sm:translate-x-0`}
+    >
+
+      {/* Close button (mobile only) */}
+      <button
+        onClick={() => setOpen(false)}
+        className="sm:hidden absolute top-4 right-4 text-slate-300"
+      >
+        <X size={20} />
+      </button>
+
+      {/* Logo */}
+      <div className="sidebar-logo">
+        <div className="logo-box">
+          <span className="logo-letter">H</span>
         </div>
-        <div>
-          <p className="font-bold font-display text-white text-sm leading-tight">HRMS Lite</p>
-          
-        </div>  
+
+        <div className="logo-text">
+          <p className="logo-title">HRMS Lite</p>
+        </div>
       </div>
 
-      <NavLink to="/" className="nav-link">
+      <NavLink to="/" className="nav-link" onClick={() => setOpen(false)}>
         <LayoutDashboard size={18} />
-        <span>Dashboard</span>
+        <span className="nav-text">Dashboard</span>
       </NavLink>
 
-      <NavLink to="/employees" className="nav-link">
+      <NavLink to="/employees" className="nav-link" onClick={() => setOpen(false)}>
         <Users size={18} />
-        <span>Employees</span>
+        <span className="nav-text">Employees</span>
       </NavLink>
 
-      <NavLink to="/attendance" className="nav-link">
+      <NavLink to="/attendance" className="nav-link" onClick={() => setOpen(false)}>
         <CalendarCheck size={18} />
-        <span>Attendance</span>
+        <span className="nav-text">Attendance</span>
       </NavLink>
 
     </div>
